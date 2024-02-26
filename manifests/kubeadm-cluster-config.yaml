@@ -33,4 +33,6 @@ nodeRegistration:
     # your node private ip address here. e.g. 172.31.34.113
     node-ip: <private ip>
 
+
+#type the command to config the kubeadm according to the manifest
 # sudo kubeadm init --config kubeadm-cluster-config.yaml

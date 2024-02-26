@@ -18,4 +18,5 @@ nodeRegistration:
     cloud-provider: external
 
 
+#type the command to join the node to the cluster with the manifest
 #sudo kubeadm join --config kubeadm-node-config.yaml
