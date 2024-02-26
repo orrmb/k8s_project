@@ -1,0 +1,36 @@
+#/etc/kubernetes/manifests/kubeadm-cluster-config.yaml
+
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+clusterName: kubernetes  # Your cluster name
+apiServer:
+  # Every IP address can communicate with the API server.
+  certSANs:
+  - 127.0.0.1
+  - 0.0.0.0
+  extraArgs:
+  bind-address: "0.0.0.0"
+  cloud-provider: external
+scheduler:
+  extraArgs:
+    bind-address: "0.0.0.0"
+controllerManager:
+  extraArgs:
+    bind-address: "0.0.0.0"
+    cloud-provider: external
+networking:
+  # These are going to be your Pod's CIDR and Service's CIDR. No need to change.
+  podSubnet: "10.244.0.0/16"
+  serviceSubnet: "10.96.0.0/12"
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+nodeRegistration:
+  #your hostname here. E.g. ip-172-31-34-113.eu-north-1.compute.internal
+  name: <ec2 hostname>
+  kubeletExtraArgs:
+    cloud-provider: external
+    # your node private ip address here. e.g. 172.31.34.113
+    node-ip: <private ip>
+
+# sudo kubeadm init --config kubeadm-cluster-config.yaml
