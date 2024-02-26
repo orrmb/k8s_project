@@ -10,7 +10,7 @@ In this project you'll build a production-quality Kubernetes cluster by hands (!
 
 Here is a higher level of the underlying infrastructure:
 
-![](../.img/k8s_object_detection_arc.png)
+![](.img/k8s_object_detection_arc.png)
 
 
 - Your cluster is based on Ubuntu `medium` instances. One instance is the **control plane**, the other ones are **worker node**.
@@ -20,7 +20,7 @@ Here is a higher level of the underlying infrastructure:
 
 Let's recall the [Kubernetes architecture](https://kubernetes.io/docs/concepts/architecture/):
 
-![](../.img/k8s_architecture.png)
+![](.img/k8s_architecture.png)
 
 The control plane node contains: 
 
@@ -223,7 +223,7 @@ Read the output to understand how to start to use your cluster and how to add no
 
 What we've deployed so far? 
 
-![](../.img/k8s_architecture_so_far.png)
+![](.img/k8s_architecture_so_far.png)
 
 The only remaining component in the control-plane node in the `cloud-controller-manager`. Let's deploy it. 
 
