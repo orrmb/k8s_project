@@ -256,7 +256,7 @@ And see that some of them (e.g. `coredns`) are in Pending or Crashing condition.
 
 Why is that? When deploying k8s cluster on AWS, there are 2 layers of networking communication:
 
-![](../.img/k8s_cni.png)
+![](.img/k8s_cni.png)
 
 - Communication between Nodes (denoted by the green line). This is done for us by AWS VPC.
 - Communication between Pods (denoted by the purple line). Although the communication is done on top of the VPC, communication between pods using their own cluster-internal IP address is **not** implemented for us by AWS.   
