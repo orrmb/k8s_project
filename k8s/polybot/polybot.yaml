@@ -49,3 +49,4 @@ spec:
 ---
 
 #kubectl apply -f polybot.yaml --namespace=bot-yolo-app
+#orb-bot-k8s.devops-int-college.com

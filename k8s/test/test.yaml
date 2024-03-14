@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-2048-service
+spec:
+  selector:
+    app: game2048-demo
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game2048-deployment-demo
+  labels:
+    app: game2048-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: game2048-demo
+  template:
+    metadata:
+        labels:
+          app: game2048-demo
+    spec:
+      containers:
+        - name: server
+          image: alexwhen/docker-2048:latest
+          ports:
+            - containerPort: 80
+
