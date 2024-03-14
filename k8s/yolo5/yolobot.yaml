@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zero-down-time-dep
+  name: yolobot-dep
   labels:
-    app: zero-down-time
+    app: yolobot-app
 spec:
   selector:
     matchLabels:
-      app: zero-down-time
+      app: yolobot
   template:
     metadata:
         labels:
-          app: zero-down-time
+          app: yolobot
     spec:
       containers:
-      - name: nodejs-server
-        image: orrmb/zero_down_time:latest
+      - name: yolo-app
+        image: orrmb/yolo-app:k8s
         resources:
           requests:
             cpu: 300m
@@ -47,3 +47,18 @@ spec:
       port: 8080
       targetPort: 3000
 ---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: autoscale-yolobot-app
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: yolobot-dep
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 30
+
+  #kubectl apply -f yolobot.yaml --namespace=bot-yolo-app

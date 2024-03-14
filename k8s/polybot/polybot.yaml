@@ -38,12 +38,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: srv-zero-down-time
+  name: srv-polybot
 spec:
   selector:
     app:  polybot
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 3000
+      port: 8443
+      targetPort: 8443
 ---
+
+#kubectl apply -f polybot.yaml --namespace=bot-yolo-app

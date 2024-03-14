@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: bot-app
+  labels:
+    name: bot-yolo-app
