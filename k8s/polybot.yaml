@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polybot-dep
+  labels:
+    app: polybot-dep
+spec:
+  selector:
+    matchLabels:
+      app: polybot
+  template:
+    metadata:
+        labels:
+          app: polybot
+    spec:
+      containers:
+      - name: bot-app
+        image: orrmb/bot-app:k8s
+        resources:
+          requests:
+            cpu: 300m
+          limits:
+            cpu: 300m
+        livenessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/health"
+            port: 3000
+        readinessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/ready"
+            port: 3000
+      terminationGracePeriodSeconds: 30
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv-zero-down-time
+spec:
+  selector:
+    app:  polybot
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 3000
+---
