@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  tls:
+    - hosts:
+      - orb-k8s-proj.devops-int-college.com
+      secretName: tls-secret
+  ingressClassName: nginx
+  rules:
+    - host: orb-k8s-proj.devops-int-college.com
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: srv-polybot
+              port:
+                number: 8443
+
+#openssl req -newkey rsa:2048 -sha256 -nodes -keyout YOURPRIVATE.key -x509 -days 365 -out YOURPUBLIC.pem -subj "Company/CN=orb-k8s-proj.devops-int-college.com"
+#kubectl create secret tls tls-secret --key YOURPRIVATE.key --cert YOURPUBLIC.pem

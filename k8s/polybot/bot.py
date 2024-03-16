@@ -90,6 +90,25 @@ class ObjectDetectionBot(Bot):
             )
             """send message to the Telegram end-user """
             self.telegram_bot_client.send_message(msg['chat']['id'], text= "Thank you, wait patiently your image is being processed ")
-
+        elif msg['text'] == '/end':
+            self.telegram_bot_client.send_message(msg['chat']['id'], text='Thank you!!! I`m here for you, come back whenever you want')
+            time.sleep(2)
+            self.telegram_bot_client.send_message(msg['chat']['id'],
+                                                  text='How would you rate the service?\n1- Very bad\n5- Excellent')
+            if msg['text'] == True:
+                self.telegram_bot_client.send_message(msg['chat']['id'],
+                                                      text='Thanks for the answer, passing the answer to the creators!')
+        elif msg['text'] == '/help':
+            self.telegram_bot_client.send_message(msg['chat']['id'],
+                                                  text='I am base on Yolo5 object detection AI model. It is known for its high accuracy object detection in images and videos, I can detect 80 objects.\n Try me!\n Send me a Photo like the example below')
+            self.telegram_bot_client.send_video(msg['chat']['id'], video=open('helpVideo.mp4', 'rb'),
+                                                supports_streaming=True)
+        elif msg['text'] == '/start':
+            self.telegram_bot_client.send_message(msg['chat']['id'],
+                                                  text='Hi, my name is Yolobot.\nPlease send me a photo and I will try to predict the objects in your image')
+        else:
+            self.telegram_bot_client.send_message(msg['chat']['id'],
+                                                  text='Sorry but I dont unsderstand what that means " {} ".\n Try using these command for help: /help'.format(
+                                                      msg["text"]))
 
 

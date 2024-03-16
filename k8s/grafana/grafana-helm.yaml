@@ -1,0 +1,10 @@
+service:
+  port: 3000
+
+persistence:
+  storageClassName: aws-ebs-k8
+  enabled: true
+  size: 2Gi
+
+env:
+  GF_DASHBOARDS_VERSIONS_TO_KEEP: 10

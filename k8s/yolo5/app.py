@@ -96,7 +96,7 @@ def consume():
 
             """ perform a GET request to Polybot to `/results` endpoint in app.py """
 
-            Yolo2bot = requests.get(url=f'https://orb-polybot-k8s.devops-int-college.com:8443/results/?predictionId={prediction_id}')
+            Yolo2bot = requests.get(url=f'https://orb-k8s-proj.devops-int-college.com:8443/results/?predictionId={prediction_id}', verify=False)
 
 
             # Delete the message from the queue as the job is considered as DONE

@@ -15,7 +15,10 @@ spec:
     spec:
       containers:
       - name: bot-app
-        image: orrmb/bot-app:k8s
+        image: orrmb/bot-app:k8s.1
+        env:
+          - name: TABLE_NAME
+            value: 'db-awsproj-orb'
         resources:
           requests:
             cpu: 300m
@@ -25,12 +28,12 @@ spec:
           initialDelaySeconds: 10
           httpGet:
             path: "/health"
-            port: 3000
+            port: 8443
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
             path: "/ready"
-            port: 3000
+            port: 8443
       terminationGracePeriodSeconds: 30
 
 ---
@@ -46,7 +49,7 @@ spec:
     - protocol: TCP
       port: 8443
       targetPort: 8443
----
+
 
 #kubectl apply -f polybot.yaml --namespace=bot-yolo-app
 #orb-bot-k8s.devops-int-college.com

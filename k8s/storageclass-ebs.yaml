@@ -1,0 +1,17 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+ name: aws-ebs-k8
+ labels:
+  deploy: aws-ebs-k8
+provisioner: kubernetes.io/aws-ebs
+volumeBindingMode: Immediate
+parameters:
+ type: gp2
+allowVolumeExpansion: true
+reclaimPolicy: Retain
+allowedTopologies:
+- matchLabelExpressions:
+  - key: failure-domain.beta.kubernetes.io/zone
+    values:
+    - 'us-west-2a'

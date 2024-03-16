@@ -1,0 +1,4 @@
+helm repo add grafana-charts https://grafana.github.io/helm-charts
+helm repo update
+helm install grafana grafana-charts/grafana
+helm upgrade -f upgrade_grafana.yaml grafana grafana-charts/grafana

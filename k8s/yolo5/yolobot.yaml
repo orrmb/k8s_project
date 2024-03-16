@@ -7,37 +7,26 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: yolobot
+      app: yolobot-app
   template:
     metadata:
         labels:
-          app: yolobot
+          app: yolobot-app
     spec:
       containers:
       - name: yolo-app
-        image: orrmb/yolo-app:k8s
+        image: orrmb/yolo-app:k8s.2
+        env:
+          - name: BUCKET_NAME
+            value: 'awsproj-orb'
+          - name: SQS_QUEUE_NAME
+            value: 'sqs-aws-project'
         resources:
           requests:
-            cpu: 300m
+            cpu: 400m
           limits:
-            cpu: 300m
-        livenessProbe:
-          initialDelaySeconds: 10
-          httpGet:
-            path: "/health"
-            port: 3000
-        readinessProbe:
-          initialDelaySeconds: 10
-          httpGet:
-            path: "/ready"
-            port: 3000
-        lifecycle:
-          preStop:
-            exec:
-              command: []
-
+            cpu: 400m
 ---
-
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
