@@ -22,3 +22,4 @@ spec:
 
 #openssl req -newkey rsa:2048 -sha256 -nodes -keyout YOURPRIVATE.key -x509 -days 365 -out YOURPUBLIC.pem -subj "Company/CN=orb-k8s-proj.devops-int-college.com"
 #kubectl create secret tls tls-secret --key YOURPRIVATE.key --cert YOURPUBLIC.pem
+#openssl req -newkey rsa:2048 -sha256 -nodes -keyout YOURPRIVATE.key -x509 -days 365 -out YOURPUBLIC.pem -subj "/C=US/ST=New York/L=Brooklyn/O=. Company/CN=orb-k8s-proj.devops-int-college.com"
