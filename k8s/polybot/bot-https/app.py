@@ -92,21 +92,17 @@ def results():
     bot.send_text(chat_id, text_results)
     return 'Ok'
 
-
-http_app = flask.Flask(__name__)
-
-@http_app.route(f'/health', methods=['GET'])
+@app.route(f'/health', methods=['GET'])
 def liveness():
     return 'Ok'
 
-@http_app.route(f'/ready', methods=['GET'])
+@app.route(f'/ready', methods=['GET'])
 def readiness():
     return 'Ok'
 
 
 if __name__ == "__main__":
     bot = ObjectDetectionBot(TELEGRAM_TOKEN, TELEGRAM_APP_URL, WEBHOOK_SSL_CERT)
-    app.run(host='0.0.0.0', port=8443, ssl_context=(WEBHOOK_SSL_CERT, WEBHOOK_SSL_PRIV), debug=True)
-    http_app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8443, debug=True)
 
 
