@@ -28,12 +28,12 @@ spec:
           initialDelaySeconds: 10
           httpGet:
             path: "/health"
-            port: 8443
+            port: 8080
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
             path: "/ready"
-            port: 8443
+            port: 8080
       terminationGracePeriodSeconds: 30
 
 ---

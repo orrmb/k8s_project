@@ -107,6 +107,6 @@ def readiness():
 if __name__ == "__main__":
     bot = ObjectDetectionBot(TELEGRAM_TOKEN, TELEGRAM_APP_URL, WEBHOOK_SSL_CERT)
     app.run(host='0.0.0.0', port=8443, ssl_context=(WEBHOOK_SSL_CERT, WEBHOOK_SSL_PRIV), debug=True)
-    http_app.run(host='0.0.0.0', port=8443, debug=True)
+    http_app.run(host='0.0.0.0', port=8080, debug=True)
 
 
