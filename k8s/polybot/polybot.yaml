@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: bot-app
-        image: orrmb/bot-app:k8s.1
+        image: orrmb/bot-app:k8s.6
         env:
           - name: TABLE_NAME
             value: 'db-awsproj-orb'
@@ -28,12 +28,12 @@ spec:
           initialDelaySeconds: 10
           httpGet:
             path: "/health"
-            port: 8080
+            port: 8443
         readinessProbe:
           initialDelaySeconds: 10
           httpGet:
             path: "/ready"
-            port: 8080
+            port: 8443
       terminationGracePeriodSeconds: 30
 
 ---

@@ -113,3 +113,4 @@ class ObjectDetectionBot(Bot):
                                                       msg["text"]))
 
 
+#curl -F "url=https://orb-k8s-proj.devops-int-college.com:8443/<TELEGRAM_TOKEN>/" -F "certificate=@YOURPUBLIC.pem" https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook
