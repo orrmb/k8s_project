@@ -14,23 +14,24 @@ spec:
     - host: orb-k8s-proj.devops-int-college.com
       http:
         paths:
+        - path: /grafana
+          pathType: Prefix
+          backend:
+            service:
+              name: grafana
+              port:
+                number: 80
+    - host: orb-k8s-proj.devops-int-college.com
+      http:
+        paths:
         - path: /
           pathType: Prefix
           backend:
             service:
               name: srv-polybot
               port:
-                number: 443
-#    - host: orb-k8s-proj.devops-int-college.com
-#      http:
-#        paths:
-#        - path: /grafana
-#          pathType: Prefix
-#          backend:
-#            service:
-#              name: grafana
-#              port:
-#                number: 80
+                number: 8443
+
 
 
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/aws/deploy.yaml
