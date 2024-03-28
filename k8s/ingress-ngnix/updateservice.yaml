@@ -19,6 +19,9 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
+  - name: prometheus #send logs to prometheus
+    port: 10254 #send logs to prometheus
+    targetPort: prometheus #send logs to prometheus
   - appProtocol: http
     name: http
     port: 80
@@ -34,3 +37,4 @@ spec:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
   type: LoadBalancer
+

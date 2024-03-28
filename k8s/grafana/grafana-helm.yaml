@@ -1,5 +1,15 @@
-service:
-  port: 80
+#grafana.ini:
+#  server:
+#    domain: orb-k8s-proj.devops-int-college.com
+#    root_url: "%(protocol)s://%(domain)s/grafana"
+#    serve_from_sub_path: true
+#ingress:
+#  enabled: true
+#  ingressClassName: nginx
+#  hosts:
+#    - "orb-k8s-proj.devops-int-college.com"
+#  path: "/grafana"
+
 
 persistence:
   storageClassName: aws-ebs-k8
@@ -9,19 +19,5 @@ persistence:
 env:
   GF_DASHBOARDS_VERSIONS_TO_KEEP: 10
 
-grafana.ini:
-  server:
-    domain: orb-k8s-proj.devops-int-college.com
-    root_url: "%(protocol)s://%(domain)s/grafana"
-    serve_from_sub_path: true
-ingress:
-  enabled: true
-  hosts:
-    - "orb-k8s-proj.devops-int-college.com"
-  path: "/grafana"
-
-admin:
-  userKey: 'orb'
-  passwordKey: 'orb123'
 
 

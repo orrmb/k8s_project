@@ -2,35 +2,23 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-ingress
-  annotations:
 spec:
-
   tls:
     - hosts:
-      - orb-k8s-proj.devops-int-college.com
+        - orb-k8s-proj.devops-int-college.com
       secretName: tls-secret
   ingressClassName: nginx
   rules:
     - host: orb-k8s-proj.devops-int-college.com
       http:
         paths:
-        - path: /grafana
-          pathType: Prefix
-          backend:
-            service:
-              name: grafana
-              port:
-                number: 80
-    - host: orb-k8s-proj.devops-int-college.com
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: srv-polybot
-              port:
-                number: 8443
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: srv-polybot
+                port:
+                  number: 8443
 
 
 

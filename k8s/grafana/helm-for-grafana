@@ -1,4 +1,9 @@
-helm repo add grafana-charts https://grafana.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm install grafana grafana-charts/grafana
-helm upgrade -f upgrade_grafana.yaml grafana grafana-charts/grafana
+helm install my-release grafana/grafana
+helm upgrade -f upgrade_grafana.yaml my-release grafana/grafana
+helm uninstall rea grafana/grafana
+
+
+
+ kubectl port-forward -n default services/my-release-grafana 3000:80 --address 0.0.0.0
