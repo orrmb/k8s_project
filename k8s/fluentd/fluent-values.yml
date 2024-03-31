@@ -1,0 +1,28 @@
+livenessProbe:
+  httpGet:
+    path: /api/plugins.json
+    port: 24220
+readinessProbe:
+  httpGet:
+    path: /api/plugins.json
+    port: 24220
+
+configMapConfigs:
+  - fluentd-prometheus-conf
+
+fileConfigs:
+  04_outputs.conf: |-
+    <label @OUTPUT>
+      <match **>
+        @type elasticsearch
+        host "elasticsearch-svc"
+        port 9200
+        logstash_format true
+      </match>
+    </label>
+  monitor_agent.conf: |-
+    <source>
+      @type monitor_agent
+      bind 0.0.0.0
+      port 24220
+    </source>
