@@ -1,1 +1,6 @@
- storageClassName: aws-ebs-k8
+storageClassName: aws-ebs-k8
+alertmanager:
+   enabled: false
+
+prometheus-pushgateway:
+   enabled: false

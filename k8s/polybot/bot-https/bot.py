@@ -8,7 +8,6 @@ from telebot.types import InputFile
 
 
 class Bot:
-
     def __init__(self, token, telegram_chat_url, ssl_pub):
         # create a new instance of the TeleBot class.
         # all communication with Telegram servers are done using self.telegram_bot_client
