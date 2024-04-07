@@ -9,6 +9,7 @@ from bot import ObjectDetectionBot
 from collections import Counter
 from loguru import logger
 from botocore.exceptions import ClientError
+import signal
 
 app = flask.Flask(__name__)
 
@@ -99,6 +100,15 @@ def liveness():
 @app.route(f'/ready', methods=['GET'])
 def readiness():
     return 'Ok'
+
+def sigterm_handler(signum, frame):
+    print("Received SIGTERM, shutting down...")
+    message = "Received SIGTERM, shutting down..."
+    chat_id = bot.chat_id
+    logger.info('shutting down...')
+    bot.send_message(chat_id=chat_id, text=message)
+    exit(0)
+signal.signal(signal.SIGTERM, sigterm_handler)
 
 
 if __name__ == "__main__":

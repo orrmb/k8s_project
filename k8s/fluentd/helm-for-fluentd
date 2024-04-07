@@ -1,5 +1,6 @@
 helm repo add fluent https://fluent.github.io/helm-charts
 helm repo update
 helm install -f fluent-values.yaml fluentd fluent/fluentd
+helm upgrade -f fluent-values.yaml fluentd fluent/fluentd
 helm uninstall fluentd fluent/fluentd
 

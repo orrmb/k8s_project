@@ -11,3 +11,42 @@ fileConfigs:
         logstash_format true
       </match>
     </label>
+
+
+
+
+
+
+<source>
+  @type forward
+</source>
+
+<source>
+  @type cloudwatch_logs
+  tag test.cloudwatch_logs.in
+  log_group_name fluent-plugin-cloudwatch-example
+  log_stream_name fluent-plugin-cloudwatch-example
+  state_file /tmp/fluent-plugin-cloudwatch-example.state
+</source>
+
+<match test.cloudwatch_logs.out>
+  @type cloudwatch_logs
+  log_group_name fluent-plugin-cloudwatch-example
+  log_stream_name fluent-plugin-cloudwatch-example
+  auto_create_stream true
+</match>
+
+<match test.cloudwatch_logs.in>
+  @type stdout
+</match>
+
+<label @OUTPUT>
+      <match **>
+    Name cloudwatch_logs
+    log_stream_name fluent-bit-cloudwatch
+    log_group_name fluent-bit-cloudwatch
+    region us-west-2
+    log_format json/emf
+    metric_namespace fluent-bit-metrics
+    metric_dimensions ec2_instance_id
+    auto_create_group true

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: polybot-dep
   labels:
-    app: polybot-dep
+    app: polybot
 spec:
   selector:
     matchLabels:
